@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — TVK Makkal Sevai Kavundampalayam{% endblock %}
+
+{% block content %}
+<div class="container section-pad">
+  <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+    <div>
+      <h3 class="fw-bold mb-0">Staff Dashboard</h3>
+      <p class="text-muted small mb-0">Welcome, {{ staff_name }}</p>
+    </div>
+    <a href="{{ url_for('logout') }}" class="btn btn-outline-danger btn-sm"><i class="bi bi-box-arrow-right me-1"></i>Sign Out</a>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-md-3">
+      <div class="stat-card"><div class="num">{{ total }}</div><div class="lbl">Total</div></div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat-card"><div class="num">{{ pending }}</div><div class="lbl">Pending</div></div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat-card"><div class="num">{{ in_progress }}</div><div class="lbl">In Progress</div></div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat-card"><div class="num">{{ resolved }}</div><div class="lbl">Resolved</div></div>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <thead>
+          <tr class="small text-muted text-uppercase">
+            <th>Ticket ID</th>
+            <th>Type</th>
+            <th>Name / Mobile</th>
+            <th>Ward</th>
+            <th>Category</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Update</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for t in tickets %}
+          <tr>
+            <td class="fw-bold text-danger small">{{ t.ticket_id }}</td>
+            <td class="small text-capitalize">{{ t.mode }}</td>
+            <td class="small">{{ t.name }}<br><span class="text-muted">{{ t.mobile }}</span></td>
+            <td class="small">{{ t.ward }}</td>
+            <td class="small">{{ t.category }}</td>
+            <td><span class="badge badge-priority-{{ t.priority }}">{{ t.priority }}</span></td>
+            <td><span class="badge bg-secondary status-badge" data-id="{{ t.ticket_id }}">{{ t.status }}</span></td>
+            <td>
+              <select class="form-select form-select-sm status-select" data-id="{{ t.ticket_id }}" style="width:150px;">
+                <option value="">Change status…</option>
+                <option value="assigned">Assigned</option>
+                <option value="in_progress">In Progress</option>
+                <option value="escalated">Escalated</option>
+                <option value="resolved">Resolved</option>
+                <option value="closed">Closed</option>
+              </select>
+            </td>
+          </tr>
+          {% else %}
+          <tr><td colspan="8" class="text-center text-muted py-4">No tickets yet.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.querySelectorAll(".status-select").forEach(function(sel){
+  sel.addEventListener("change", function(){
+    if(!sel.value) return;
+    fetch("/dashboard/update/" + sel.dataset.id, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({status: sel.value})
+    }).then(r => r.json()).then(data => {
+      if(data.ok){
+        const badge = document.querySelector('.status-badge[data-id="' + sel.dataset.id + '"]');
+        badge.textContent = sel.value;
+        sel.value = "";
+      } else {
+        alert("Update failed");
+      }
+    });
+  });
+});
+</script>
+{% endblock %}

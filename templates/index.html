@@ -1,0 +1,365 @@
+{% extends "base.html" %}
+{% block title %}TVK Makkal Sevai — Kavundampalayam | TVK மக்கள் சேவை — கவுண்டம்பாளையம்{% endblock %}
+
+{% block content %}
+
+<!-- ============== HERO ============== -->
+<section class="hero">
+  <div class="hero-topbar"></div>
+  <div class="container position-relative">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7 text-center text-lg-start">
+        <div class="hero-badge"><span class="dot"></span><span data-en="Kavundampalayam MLA Constituency" data-ta="கவுண்டம்பாளையம் MLA தொகுதி">கவுண்டம்பாளையம் MLA தொகுதி</span></div>
+        <h1 data-en="Register your rights!" data-ta="உங்கள் உரிமையை பதிவு செய்யுங்கள்!">உங்கள் உரிமையை பதிவு செய்யுங்கள்!</h1>
+        <p class="lead-text" data-en="Submit a complaint or a personal need to the Kavundampalayam MLA office. We track every request and keep you updated at every step." data-ta="கவுண்டம்பாளையம் MLA அலுவலகத்திற்கு புகார் அல்லது தனிப்பட்ட தேவையை பதிவு செய்யுங்கள். ஒவ்வொரு கோரிக்கையையும் நாங்கள் கண்காணித்து, ஒவ்வொரு கட்டத்திலும் உங்களுக்குத் தெரிவிப்போம்.">கவுண்டம்பாளையம் MLA அலுவலகத்திற்கு புகார் அல்லது தனிப்பட்ட தேவையை பதிவு செய்யுங்கள். ஒவ்வொரு கோரிக்கையையும் நாங்கள் கண்காணித்து, ஒவ்வொரு கட்டத்திலும் உங்களுக்குத் தெரிவிப்போம்.</p>
+        <a href="#complaint-form" class="btn-cta">
+          <span data-en="Submit a Complaint" data-ta="புகார் பதிவு செய்யவும்">புகார் பதிவு செய்யவும்</span>
+          <i class="bi bi-arrow-down-circle-fill"></i>
+        </a>
+      </div>
+      <div class="col-lg-5">
+        <div class="hero-photo-frame">
+          <img src="{{ url_for('static', filename='img/vijay-portrait.jpg') }}" alt="Thalapathy Vijay — Honourable Chief Minister of Tamil Nadu">
+          <div class="hero-photo-caption">
+            <div class="name">C. Joseph Vijay</div>
+            <div class="d-flex justify-content-center align-items-center gap-1">
+              <span class="tag">Honourable Chief Minister of Tamil Nadu</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 48" preserveAspectRatio="none" style="width:100%;height:48px;display:block" fill="#F5F5F5"><path d="M0,48 C360,0 1080,0 1440,48 L1440,48 L0,48 Z"></path></svg>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- ============== MLA PROFILE CARD ============== -->
+  <div class="row mla-card mx-0">
+    <div class="col-md-4 p-0">
+      <div class="mla-photo-wrap">
+        <img src="{{ url_for('static', filename='img/mla-kanimozhi.jpg') }}" alt="Dr. R.D. Kanimozhi Santhosh">
+      </div>
+    </div>
+    <div class="col-md-8 d-flex flex-column justify-content-center p-4 p-md-5">
+      <div class="d-flex align-items-center gap-2 mb-2">
+        <span class="mla-badge">MLA</span>
+        <span class="mla-badge-outline">Kavundampalayam</span>
+      </div>
+      <h2>Dr. R.D. Kanimozhi Santhosh</h2>
+      <p class="small text-muted mb-3">டாக்டர். ஆர்.டி. கனிமொழி சந்தோஷ் — கவுண்டம்பாளையம் தொகுதி சட்டமன்ற உறுப்பினர் (AC 117)</p>
+      <div class="mla-tags d-flex flex-wrap gap-2 mb-3">
+        <span class="tag-pill tag-pill-gold"><i class="bi bi-people-fill"></i> Kavundampalayam Constituency</span>
+      </div>
+      <div class="mla-contact-row d-flex flex-wrap gap-4">
+        <span><i class="bi bi-telephone-fill me-2 text-danger"></i><a href="tel:+919442211117">+91 94422 11117</a></span>
+        <span><i class="bi bi-envelope-fill me-2 text-danger"></i><a href="mailto:kavundampalayam.tvk@gmail.com">kavundampalayam.tvk@gmail.com</a></span>
+      </div>
+    </div>
+  </div>
+  <div class="mla-gold-strip"></div>
+
+  <!-- ============== STATS ============== -->
+  <div class="row g-3 my-5">
+    <div class="col-6 col-md-3">
+      <div class="stat-card">
+        <div class="num" id="statTotal">0</div>
+        <div class="lbl" data-en="Complaints Received" data-ta="பெறப்பட்ட புகார்கள்">பெறப்பட்ட புகார்கள்</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat-card">
+        <div class="num">10</div>
+        <div class="lbl" data-en="Wards Covered" data-ta="வார்டுகள்">வார்டுகள்</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat-card">
+        <div class="num">4-7</div>
+        <div class="lbl" data-en="Avg. Resolution (days)" data-ta="சராசரி தீர்வு (நாட்கள்)">சராசரி தீர்வு (நாட்கள்)</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat-card">
+        <div class="num">24/7</div>
+        <div class="lbl" data-en="Online Submission" data-ta="ஆன்லைன் பதிவு">ஆன்லைன் பதிவு</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== FORM ============== -->
+  <div id="complaint-form" class="form-card mb-5">
+    <div class="form-heading">
+      <h2 data-en="New Request" data-ta="புதிய கோரிக்கை">புதிய கோரிக்கை</h2>
+      <p data-en="Fill in the details below. You will receive a Ticket ID on submission." data-ta="கீழே உள்ள விவரங்களை நிரப்பவும். சமர்ப்பித்தவுடன் டிக்கெட் ஐடி கிடைக்கும்.">கீழே உள்ள விவரங்களை நிரப்பவும். சமர்ப்பித்தவுடன் டிக்கெட் ஐடி கிடைக்கும்.</p>
+    </div>
+
+    <div class="form-tabs">
+      <button type="button" class="form-tab-btn active" data-target="panel-complaint">
+        <i class="bi bi-file-earmark-text"></i>
+        <span data-en="Complaint" data-ta="புகார்">புகார்</span>
+      </button>
+      <button type="button" class="form-tab-btn" data-target="panel-need">
+        <i class="bi bi-hand-thumbs-up"></i>
+        <span data-en="Needs" data-ta="தேவை">தேவை</span>
+      </button>
+    </div>
+
+    <!-- ---------- COMPLAINT PANEL ---------- -->
+    <div id="panel-complaint" class="form-panel">
+      <form class="tvk-form" data-mode="complaint">
+        <input type="hidden" name="lat" class="gps-lat">
+        <input type="hidden" name="lng" class="gps-lng">
+
+        <div class="section-label" data-en="Your Details" data-ta="உங்கள் விவரங்கள்">உங்கள் விவரங்கள்</div>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label class="form-label" data-en="Full Name" data-ta="முழு பெயர்">முழு பெயர்</label><span class="required-star"> *</span>
+            <input type="text" name="name" class="form-control" required data-en-ph="Your full name" data-ta-ph="உங்கள் முழு பெயர்" placeholder="உங்கள் முழு பெயர்">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" data-en="Mobile Number" data-ta="மொபைல் எண்">மொபைல் எண்</label><span class="required-star"> *</span>
+            <input type="tel" name="mobile" class="form-control" pattern="[0-9]{10}" required data-en-ph="10-digit mobile number" data-ta-ph="10 இலக்க மொபைல் எண்" placeholder="10 இலக்க மொபைல் எண்">
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" data-en="Address" data-ta="முகவரி">முகவரி</label><span class="required-star"> *</span>
+          <input type="text" name="address" class="form-control" required data-en-ph="House no., street, area, landmark" data-ta-ph="கதவு எண், தெரு, பகுதி, அடையாளம்" placeholder="கதவு எண், தெரு, பகுதி, அடையாளம்">
+        </div>
+
+        <hr class="my-4">
+        <div class="section-label" data-en="Location" data-ta="இருப்பிடம்">இருப்பிடம்</div>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label class="form-label" data-en="Ward" data-ta="வார்டு">வார்டு</label><span class="required-star"> *</span>
+            <select name="ward" class="form-select ward-select" required>
+              <option value="">— வார்டு தேர்ந்தெடுக்கவும் —</option>
+              {% for w in wards %}
+              <option value="{{ w.no }}">{{ w.name_en }} / {{ w.name_ta }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" data-en="Street" data-ta="தெரு">தெரு</label><span class="required-star"> *</span>
+            <select name="street" class="form-select street-select" required disabled>
+              <option value="">— முதலில் வார்டு தேர்ந்தெடுக்கவும் —</option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label d-block" data-en="Your Location" data-ta="உங்கள் இருப்பிடம்">உங்கள் இருப்பிடம்</label>
+          <p class="small text-muted mb-2" data-en="Required — share your location to confirm you are within Kavundampalayam constituency." data-ta="தேவை — நீங்கள் கவுண்டம்பாளையம் தொகுதிக்குள் இருப்பதை உறுதிசெய்ய இருப்பிடத்தை பகிரவும்.">தேவை — நீங்கள் கவுண்டம்பாளையம் தொகுதிக்குள் இருப்பதை உறுதிசெய்ய இருப்பிடத்தை பகிரவும்.</p>
+          <button type="button" class="btn-locate">
+            <i class="bi bi-geo-alt-fill"></i>
+            <span data-en="Use My Location" data-ta="என் இருப்பிடத்தைப் பயன்படுத்து">என் இருப்பிடத்தைப் பயன்படுத்து</span>
+          </button>
+          <div class="gps-status small text-muted mt-2"></div>
+        </div>
+
+        <hr class="my-4">
+        <div class="section-label" data-en="Complaint Details" data-ta="புகார் விவரங்கள்">புகார் விவரங்கள்</div>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label class="form-label" data-en="Category" data-ta="வகை">வகை</label><span class="required-star"> *</span>
+            <select name="category" class="form-select" required>
+              <option value="">— வகை தேர்ந்தெடுக்கவும் —</option>
+              {% for c in categories %}
+              <option value="{{ c.key }}">{{ c.en }} / {{ c.ta }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" data-en="Subject" data-ta="தலைப்பு">தலைப்பு</label><span class="required-star"> *</span>
+            <input type="text" name="subject" class="form-control" required data-en-ph="Brief subject of your complaint" data-ta-ph="புகாரின் சுருக்கமான தலைப்பு" placeholder="புகாரின் சுருக்கமான தலைப்பு">
+          </div>
+        </div>
+        <div class="mb-4">
+          <label class="form-label" data-en="Description" data-ta="விளக்கம்">விளக்கம்</label><span class="required-star"> *</span>
+          <textarea name="description" rows="4" class="form-control" required data-en-ph="Describe your complaint in detail" data-ta-ph="உங்கள் புகாரை விரிவாக விவரிக்கவும்" placeholder="உங்கள் புகாரை விரிவாக விவரிக்கவும்"></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit-tvk">
+          <span data-en="Submit Complaint" data-ta="புகார் சமர்ப்பிக்கவும்">புகார் சமர்ப்பிக்கவும்</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- ---------- NEEDS PANEL ---------- -->
+    <div id="panel-need" class="form-panel d-none">
+      <form class="tvk-form" data-mode="need">
+        <input type="hidden" name="lat" class="gps-lat">
+        <input type="hidden" name="lng" class="gps-lng">
+
+        <div class="section-label" data-en="Your Details" data-ta="உங்கள் விவரங்கள்">உங்கள் விவரங்கள்</div>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label class="form-label" data-en="Full Name" data-ta="முழு பெயர்">முழு பெயர்</label><span class="required-star"> *</span>
+            <input type="text" name="name" class="form-control" required placeholder="உங்கள் முழு பெயர்">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" data-en="Mobile Number" data-ta="மொபைல் எண்">மொபைல் எண்</label><span class="required-star"> *</span>
+            <input type="tel" name="mobile" class="form-control" pattern="[0-9]{10}" required placeholder="10 இலக்க மொபைல் எண்">
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" data-en="Address" data-ta="முகவரி">முகவரி</label><span class="required-star"> *</span>
+          <input type="text" name="address" class="form-control" required placeholder="கதவு எண், தெரு, பகுதி, அடையாளம்">
+        </div>
+
+        <hr class="my-4">
+        <div class="section-label" data-en="Location" data-ta="இருப்பிடம்">இருப்பிடம்</div>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label class="form-label" data-en="Ward" data-ta="வார்டு">வார்டு</label><span class="required-star"> *</span>
+            <select name="ward" class="form-select ward-select" required>
+              <option value="">— வார்டு தேர்ந்தெடுக்கவும் —</option>
+              {% for w in wards %}
+              <option value="{{ w.no }}">{{ w.name_en }} / {{ w.name_ta }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" data-en="Street" data-ta="தெரு">தெரு</label><span class="required-star"> *</span>
+            <select name="street" class="form-select street-select" required disabled>
+              <option value="">— முதலில் வார்டு தேர்ந்தெடுக்கவும் —</option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label d-block" data-en="Your Location" data-ta="உங்கள் இருப்பிடம்">உங்கள் இருப்பிடம்</label>
+          <button type="button" class="btn-locate">
+            <i class="bi bi-geo-alt-fill"></i>
+            <span data-en="Use My Location" data-ta="என் இருப்பிடத்தைப் பயன்படுத்து">என் இருப்பிடத்தைப் பயன்படுத்து</span>
+          </button>
+          <div class="gps-status small text-muted mt-2"></div>
+        </div>
+
+        <hr class="my-4">
+        <div class="section-label" data-en="Need Details" data-ta="தேவை விவரங்கள்">தேவை விவரங்கள்</div>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label class="form-label" data-en="Category" data-ta="வகை">வகை</label><span class="required-star"> *</span>
+            <select name="category" class="form-select" required>
+              <option value="">— வகை தேர்ந்தெடுக்கவும் —</option>
+              <option value="basic">Basic Needs / அடிப்படை தேவைகள்</option>
+              <option value="medical">Medical Assistance / மருத்துவ உதவி</option>
+              <option value="welfare">Welfare Schemes / நல திட்டங்கள்</option>
+              <option value="housing">Housing Assistance / வீட்டு உதவி</option>
+              <option value="employment">Employment &amp; Business / வேலைவாய்ப்பு</option>
+              <option value="legal">Legal &amp; Document Assistance / சட்ட உதவி</option>
+              <option value="education">Education Related / கல்வி தொடர்பான</option>
+              <option value="other">Other / பிற</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" data-en="Specify Your Need" data-ta="தேவையை குறிப்பிடவும்">தேவையை குறிப்பிடவும்</label><span class="required-star"> *</span>
+            <input type="text" name="need_type" class="form-control" required data-en-ph="Describe your need briefly" data-ta-ph="உங்கள் தேவையை சுருக்கமாக விவரிக்கவும்" placeholder="உங்கள் தேவையை சுருக்கமாக விவரிக்கவும்">
+          </div>
+        </div>
+        <div class="mb-4">
+          <label class="form-label" data-en="Description" data-ta="விளக்கம்">விளக்கம்</label><span class="required-star"> *</span>
+          <textarea name="description" rows="4" class="form-control" required placeholder="உங்கள் தேவையை விரிவாக விவரிக்கவும்"></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit-tvk">
+          <span data-en="Submit Need" data-ta="தேவையை சமர்ப்பிக்கவும்">தேவையை சமர்ப்பிக்கவும்</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============== CATEGORIES OVERVIEW ============== -->
+  <div class="mb-5">
+    <h3 class="fw-bold mb-4 text-center" data-en="What can you report?" data-ta="நீங்கள் என்ன பதிவு செய்யலாம்?">நீங்கள் என்ன பதிவு செய்யலாம்?</h3>
+    <div class="row g-3">
+      {% for c in categories[:8] %}
+      <div class="col-6 col-md-3">
+        <div class="stat-card text-start d-flex align-items-center gap-3">
+          <div class="category-icon-badge"><i class="bi bi-check2-square"></i></div>
+          <div>
+            <div class="fw-bold small">{{ c.en }}</div>
+            <div class="small text-muted">{{ c.ta }}</div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- ============== OFFICE INFO / MAP ============== -->
+  <div id="office-info" class="row g-4 mb-5">
+    <div class="col-lg-7">
+      <div class="office-card">
+        <div class="office-map">
+          <iframe
+            src="https://www.google.com/maps?q=Kavundampalayam,Coimbatore&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-5">
+      <div class="office-card p-4 h-100">
+        <h4 class="fw-bold mb-3" data-en="Constituency Office" data-ta="தொகுதி அலுவலகம்">தொகுதி அலுவலகம்</h4>
+        <div class="office-detail-item">
+          <div class="office-detail-icon"><i class="bi bi-geo-alt-fill"></i></div>
+          <div>
+            <div class="fw-bold small" data-en="Address" data-ta="முகவரி">முகவரி</div>
+            <div class="small text-muted">Kavundampalayam Main Road, Coimbatore - 641030, Tamil Nadu</div>
+          </div>
+        </div>
+        <div class="office-detail-item">
+          <div class="office-detail-icon"><i class="bi bi-telephone-fill"></i></div>
+          <div>
+            <div class="fw-bold small" data-en="Phone" data-ta="தொலைபேசி">தொலைபேசி</div>
+            <div class="small text-muted"><a href="tel:+919442211117" class="text-muted">+91 94422 11117</a></div>
+          </div>
+        </div>
+        <div class="office-detail-item">
+          <div class="office-detail-icon"><i class="bi bi-envelope-fill"></i></div>
+          <div>
+            <div class="fw-bold small" data-en="Email" data-ta="மின்னஞ்சல்">மின்னஞ்சல்</div>
+            <div class="small text-muted"><a href="mailto:kavundampalayam.tvk@gmail.com" class="text-muted">kavundampalayam.tvk@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="office-detail-item">
+          <div class="office-detail-icon"><i class="bi bi-clock-fill"></i></div>
+          <div>
+            <div class="fw-bold small" data-en="Office Hours" data-ta="அலுவலக நேரம்">அலுவலக நேரம்</div>
+            <div class="small text-muted" data-en="Mon – Sat, 9:00 AM – 6:00 PM" data-ta="திங்கள் – சனி, காலை 9:00 – மாலை 6:00">திங்கள் – சனி, காலை 9:00 – மாலை 6:00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============== RECEIPT MODAL ============== -->
+<div class="modal fade" id="receiptModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius:18px; overflow:hidden;">
+      <div class="modal-body text-center p-4 p-md-5">
+        <div class="mb-3" style="font-size:3rem; color:#2e7d32;"><i class="bi bi-check-circle-fill"></i></div>
+        <h4 class="fw-bold" data-en="Request Submitted!" data-ta="கோரிக்கை சமர்ப்பிக்கப்பட்டது!">கோரிக்கை சமர்ப்பிக்கப்பட்டது!</h4>
+        <p class="text-muted small" data-en="Your request has been received by the MLA office. Save your ticket ID to track progress." data-ta="உங்கள் கோரிக்கை MLA அலுவலகத்தால் பெறப்பட்டது. முன்னேற்றத்தை கண்காணிக்க உங்கள் டிக்கெட் ஐடியை சேமிக்கவும்.">உங்கள் கோரிக்கை MLA அலுவலகத்தால் பெறப்பட்டது. முன்னேற்றத்தை கண்காணிக்க உங்கள் டிக்கெட் ஐடியை சேமிக்கவும்.</p>
+        <div class="bg-light rounded-3 p-3 my-3">
+          <div class="small text-muted" data-en="Your Ticket ID" data-ta="உங்கள் டிக்கெட் ஐடி">உங்கள் டிக்கெட் ஐடி</div>
+          <div class="fw-bold fs-5 text-danger" id="receiptTicketId">—</div>
+        </div>
+        <div class="d-flex justify-content-around small mb-4">
+          <div><span class="text-muted" data-en="Priority" data-ta="முன்னுரிமை">முன்னுரிமை</span>: <strong id="receiptPriority">—</strong></div>
+          <div><span class="text-muted" data-en="Expected by" data-ta="எதிர்பார்க்கப்படும் தேதி">எதிர்பார்க்கப்படும் தேதி</span>: <strong id="receiptExpected">—</strong></div>
+        </div>
+        <div class="d-flex gap-2">
+          <a href="{{ url_for('track_page') }}" class="btn btn-outline-danger flex-fill" data-en="Track My Complaint" data-ta="என் புகார் நிலையை பார்க்க">என் புகார் நிலையை பார்க்க</a>
+          <button type="button" class="btn btn-danger flex-fill" data-bs-dismiss="modal" data-en="Submit Another" data-ta="மற்றொன்றை சமர்ப்பிக்க">மற்றொன்றை சமர்ப்பிக்க</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

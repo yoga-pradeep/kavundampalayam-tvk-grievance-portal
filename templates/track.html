@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Track Complaint — TVK Makkal Sevai Kavundampalayam{% endblock %}
+
+{% block content %}
+<div class="container section-pad">
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+      <div class="form-card">
+        <div class="form-heading">
+          <h2 data-en="Track Your Complaint" data-ta="உங்கள் புகார் நிலையை பார்க்க">உங்கள் புகார் நிலையை பார்க்க</h2>
+          <p data-en="Enter your ticket ID to see the current status" data-ta="தற்போதைய நிலையை பார்க்க உங்கள் டிக்கெட் ஐடியை உள்ளிடவும்">தற்போதைய நிலையை பார்க்க உங்கள் டிக்கெட் ஐடியை உள்ளிடவும்</p>
+        </div>
+
+        <form id="trackForm" class="d-flex gap-2 mb-2">
+          <input type="text" id="trackInput" class="form-control" placeholder="e.g. TVK-EB-2026-001234" required>
+          <button type="submit" class="btn btn-danger px-4" data-en="Track" data-ta="தேடு">தேடு</button>
+        </form>
+        <p class="small text-muted" data-en="Your ticket ID was shown after submitting your complaint. Format: TVK-EB-2026-XXXXXX" data-ta="புகார் சமர்ப்பித்த பிறகு உங்கள் டிக்கெட் ஐடி காட்டப்பட்டது. வடிவம்: TVK-EB-2026-XXXXXX">புகார் சமர்ப்பித்த பிறகு உங்கள் டிக்கெட் ஐடி காட்டப்பட்டது. வடிவம்: TVK-EB-2026-XXXXXX</p>
+
+        <div id="trackNotFound" class="alert alert-warning d-none mt-3">
+          <strong data-en="Ticket not found" data-ta="டிக்கெட் கிடைக்கவில்லை">டிக்கெட் கிடைக்கவில்லை</strong>
+          <div class="small" data-en="Check the ID and try again. IDs are case-insensitive." data-ta="ஐடியை சரிபார்த்து மீண்டும் முயற்சிக்கவும்.">ஐடியை சரிபார்த்து மீண்டும் முயற்சிக்கவும்.</div>
+        </div>
+
+        <div id="trackResult" class="d-none mt-4">
+          <hr>
+          <div class="d-flex justify-content-between flex-wrap gap-2 mb-3">
+            <div>
+              <div class="small text-muted">Ticket ID</div>
+              <div class="fw-bold text-danger" id="resTicketId"></div>
+            </div>
+            <div>
+              <div class="small text-muted" data-en="Status" data-ta="நிலை">நிலை</div>
+              <span class="badge bg-primary" id="resStatus"></span>
+            </div>
+            <div>
+              <div class="small text-muted" data-en="Priority" data-ta="முன்னுரிமை">முன்னுரிமை</div>
+              <span id="resPriority" class="fw-bold"></span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="small text-muted" data-en="Submitted by" data-ta="சமர்ப்பித்தவர்">சமர்ப்பித்தவர்</div>
+            <div class="fw-bold" id="resName"></div>
+          </div>
+          <div class="mb-3">
+            <div class="small text-muted" data-en="Subject" data-ta="தலைப்பு">தலைப்பு</div>
+            <div class="fw-bold" id="resSubject"></div>
+          </div>
+          <div class="mb-4">
+            <div class="small text-muted" data-en="Expected resolution by" data-ta="எதிர்பார்க்கப்படும் தீர்வு தேதி">எதிர்பார்க்கப்படும் தீர்வு தேதி</div>
+            <div class="fw-bold" id="resExpected"></div>
+          </div>
+
+          <h6 class="fw-bold mb-3" data-en="Status Timeline" data-ta="நிலை காலவரிசை">நிலை காலவரிசை</h6>
+          <div id="resTimeline"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
