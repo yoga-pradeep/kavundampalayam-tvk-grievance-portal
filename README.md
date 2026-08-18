@@ -1,4 +1,6 @@
-![Kavundampalayam Grievance Portal](GITHUB-GENERATED-IMAGE-URL)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/yoga-pradeep/kavundampalayam-tvk-grievance-portal/main/static/img/img.png" alt="Kavundampalayam Grievance Portal" width="100%">
+</p>
 
 # TVK Makkal Sevai — Kavundampalayam
 
